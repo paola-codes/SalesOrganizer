@@ -139,13 +139,16 @@ def add_new_deal():
     body = request.get_json()
 
     new_deal = Deal(
+        deal_title=body["deal_title"],
+        description=body["description"],
         deal_owner=body["deal_owner"], 
         deal_value=body["deal_value"], 
         client_name=body["client_name"], 
         expected_product=body["expected_product"], 
+        status=body["status"],
         loss_reasons=""
         win_reasons=""
-        notes=""
+        notes=body["notes"],
         estimated_close_date=body["estimated_close_date"],
         contact_id=body["contact_id"]
     )

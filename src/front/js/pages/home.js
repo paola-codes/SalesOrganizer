@@ -7,7 +7,7 @@ export const Home = () => {
   const { store, actions } = useContext(Context);
 
   return (
-    <div className="container p-4 text-center text-light fs-6 m-auto mt-3">
+    <div className="container p-4 text-center text-dark fs-6 m-auto mt-3">
       <h1>Welcome to SalesOrganizer</h1>
 
       <h2 className="my-3">

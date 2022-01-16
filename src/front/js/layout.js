@@ -5,6 +5,7 @@ import ScrollToTop from "./component/scrollToTop";
 
 import { Home } from "./pages/home";
 import { LoginRequired } from "./pages/LoginRequired";
+import { Navbar } from "./component/navbar";
 
 //PAGES
 
@@ -26,6 +27,7 @@ const Layout = () => {
     <div>
       <BrowserRouter basename={basename}>
         <ScrollToTop>
+          <Navbar />
           <Switch>
             <Route exact path="/">
               <Home />

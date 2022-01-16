@@ -30,7 +30,7 @@ export const LoginPage = (props) => {
   };
 
   return (
-    <div className="container p-4 pt-3 text-start text-light fs-6">
+    <div className="container p-4 pt-3 text-start text-dark fs-6">
       <h1 className="text-center m-3">Login</h1>
       <form className="text-start">
         <div className="form-group my-3">

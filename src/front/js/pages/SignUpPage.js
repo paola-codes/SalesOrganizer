@@ -29,11 +29,11 @@ export const SignUpPage = () => {
   };
 
   return (
-    <div className="container p-4 text-start text-light fs-6">
+    <div className="container p-4 text-start text-dark fs-6">
       <h1 className="m-3 text-center">Sign Up Page</h1>
       <div className="row">
         <div className="col" />
-        <div className="col-2 m-2 mb-1 text-light">
+        <div className="col-2 m-2 mb-1 text-dark">
           <form className="text-start">
             <div className="form-group my-1">
               <label>Full Name</label>

@@ -1,7 +1,6 @@
 const getState = ({ getStore, getActions, setStore }) => {
   return {
     store: {
-      deals: [],
       backEndUrl: process.env.BACKEND_URL,
       loggedUser: {},
       listOfContacts: [],
