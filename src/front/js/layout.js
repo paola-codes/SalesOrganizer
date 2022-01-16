@@ -4,14 +4,27 @@ import { BrowserRouter, Route, Switch, useLocation } from "react-router-dom";
 import ScrollToTop from "./component/scrollToTop";
 
 import { Home } from "./pages/home";
-import { LoginRequired } from "./pages/LoginRequired";
 import { Navbar } from "./component/navbar";
 
-//PAGES
+//Contacts
+import { AddContact } from "./pages/AddContact";
+import { EditContact } from "./pages/EditContact";
+import { ContactDetails } from "./pages/ContactDetails";
+import { ListOfContacts } from "./component/ListOfContacts";
+//Deals
+import { AddDeal } from "./pages/AddDeal";
+import { EditDeal } from "./pages/EditDeal";
+import { DealDetails } from "./pages/DealDetails";
+import { ListOfDeals } from "./component/ListOfDeals";
+//Profile
+import { Profile } from "./pages/Profile";
+import { EditProfile } from "./pages/EditProfile";
 
 //Main Home Page
 import { SignUpPage } from "./pages/SignUpPage";
 import { LoginPage } from "./pages/LoginPage";
+import { LoginRequired } from "./pages/LoginRequired";
+import { HomePage } from "./pages/HomePage";
 
 import injectContext from "./store/appContext";
 
@@ -40,6 +53,42 @@ const Layout = () => {
             </Route>
             <Route exact path="/LoginRequired">
               <LoginRequired />
+            </Route>
+            <Route exact path="/HomePage">
+              <HomePage />
+            </Route>
+
+            <Route exact path="/AddContact">
+              <AddContact />
+            </Route>
+            <Route exact path="/EditContact">
+              <EditContact />
+            </Route>
+            <Route exact path="/ContactDetails">
+              <ContactDetails />
+            </Route>
+            <Route exact path="/ListOfContacts">
+              <ListOfContacts />
+            </Route>
+
+            <Route exact path="/AddDeal">
+              <AddDeal />
+            </Route>
+            <Route exact path="/EditDeal">
+              <EditDeal />
+            </Route>
+            <Route exact path="/DealDetails">
+              <DealDetails />
+            </Route>
+            <Route exact path="/ListOfDeals">
+              <ListOfDeals />
+            </Route>
+
+            <Route exact path="/Profile">
+              <Profile />
+            </Route>
+            <Route exact path="/EditProfile">
+              <EditProfile />
             </Route>
 
             <Route>
