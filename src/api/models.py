@@ -46,10 +46,13 @@ class Contact(db.Model):
 class Deal(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     #Deal Body Data
+    deal_title = db.Column(db.String(80), unique=False, nullable=True)
+    description = db.Column(db.String(80), unique=False, nullable=True)
     deal_owner = db.Column(db.String(80), unique=False, nullable=True)
     deal_value = db.Column(db.String(80), unique=False, nullable=True)
     client_name = db.Column(db.String(80), unique=False, nullable=True)
     expected_product = db.Column(db.String(80), unique=False, nullable=True)
+    status = db.Column(db.String(80), unique=False, nullable=True)
     loss_reasons = db.Column(db.String(80), unique=False, nullable=True)
     win_reasons = db.Column(db.String(80), unique=False, nullable=True)
     notes = db.Column(db.String(80), unique=False, nullable=True)
@@ -63,10 +66,13 @@ class Deal(db.Model):
     def serialize(self):
         return {
             "id": self.id,
+            "deal_title": self.deal_title,
+            "description": self.description,
             "deal_owner": self.deal_owner,
             "deal_value": self.deal_value,
             "client_name": self.client_name,
             "expected_product": self.expected_product,
+            "status": self.status,
             "loss_reasons": self.loss_reasons,
             "win_reasons": self.win_reasons,
             "notes": self.notes,

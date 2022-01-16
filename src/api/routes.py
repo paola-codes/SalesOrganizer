@@ -1,12 +1,11 @@
 """
 This module takes care of starting the API Server, Loading the DB and Adding the endpoints
 """
-from flask import Flask, request, jsonify, url_for, Blueprint
+from flask import Flask, deal, jsonify, url_for, Blueprint
 from api.models import db, User, Contact, Deal
 from api.utils import generate_sitemap, APIException
 
 api = Blueprint('api', __name__)
-
 
 #Initial GET method
 @api.route('/user', methods=['GET'])
@@ -57,9 +56,9 @@ def user_login():
 
 #User Methods ---------------------------------------------------------------
 
-#Get User by Email
+#Get User by ID
 @api.route('/user/<id>', methods=['GET'])
-def get_specific_user(id):
+def get_user_by_id(id):
 
     user_query = User.query.get(id)
 
@@ -69,7 +68,7 @@ def get_specific_user(id):
 
 #Update User Profile
 @api.route('/user/<id>', methods=['PUT'])
-def change_client_profile(id):
+def update_user_profile(id):
     
     my_profile = User.query.get(id)
 
@@ -89,7 +88,7 @@ def change_client_profile(id):
 
 #Deal Methods ------------------------------------------------------------
 
-#Get All Deals from Specific Contact
+#Get All Deals By Contact
 @api.route('/deal/contact_id/<contact_id>', methods=['GET'])
 def get_deals_by_contact(contact_id):
 
@@ -100,7 +99,7 @@ def get_deals_by_contact(contact_id):
         deals_by_contact
     ), 200
 
-#Get All Deals from Specific Deal Owner
+#Get All Deals By Deal Owner
 @api.route('/deal/deal_owner/<deal_owner>', methods=['GET'])
 def get_deals_by_deal_owner(deal_owner):
 
@@ -122,9 +121,20 @@ def get_all_deals():
         all_deals
     ), 200
 
+#Get Deal by ID
+@api.route('/deal/<id>', methods=['GET'])
+def get_deal_by_id(id):
+    
+    deals_query = Deal.query.filter_by(id=id)
+    deal_by_id = list(map(lambda x: x.serialize(), deal_by_id))
+
+    return jsonify(
+        deal_by_id
+    ), 200
+
 #Post New Deal
 @api.route('/deal', methods=['POST'])
-def new_deal():
+def add_new_deal():
 
     body = request.get_json()
 
@@ -133,9 +143,9 @@ def new_deal():
         deal_value=body["deal_value"], 
         client_name=body["client_name"], 
         expected_product=body["expected_product"], 
-        loss_reasons=body["loss_reasons"],
-        win_reasons=body["win_reasons"],
-        notes=body["notes"],
+        loss_reasons=""
+        win_reasons=""
+        notes=""
         estimated_close_date=body["estimated_close_date"],
         contact_id=body["contact_id"]
     )
@@ -147,153 +157,203 @@ def new_deal():
     all_deals = list(map(lambda x: x.serialize(), deals_query))
     return jsonify(all_deals), 200
 
-#Delete Vehicle
-@api.route('/vehicle/<id>', methods=['DELETE'])
-def delete_vehicle(id):
+#Update Deal Details
+@api.route('/deal/details/<id>', methods=['PUT'])
+def update_deal_details(id):
+
+    my_deal = Deal.query.get(id)
 
     body = request.get_json()
-    
-    vehicle =  Vehicle.query.get(id)
 
-    db.session.delete(vehicle)
+    my_deal.deal_title = body["deal_title"]
+    my_deal.description = body["description"]
+    my_deal.deal_owner = body["deal_owner"]
+    my_deal.deal_value = body["deal_value"]
+    my_deal.client_name = body["client_name"]
+    my_deal.expected_product = body["expected_product"]
+    my_deal.status = body["status"]
+    my_deal.loss_reasons = body["loss_reasons"]
+    my_deal.win_reasons = body["win_reasons"]
+    my_deal.notes = body["notes"]
+    my_deal.estimated_close_date = body["estimated_close_date"]
+
     db.session.commit()
 
-    vehicles_query = Vehicle.query.all()
-    all_vehicles = list(map(lambda x: x.serialize(), vehicles_query))
-    return jsonify(all_vehicles), 200
+    deals_query = Deal.query.get(id)
+
+    if deals_query.status == body["status"]:
+        return jsonify(deals_query.serialize()), 200
+    raise APIException("Update Failed")
+
+#Update Deal as Won
+@api.route('/deal/won/<id>', methods=['PUT'])
+def won_deal(id):
     
-#Request Methods ------------------------------------------------------------
-
-#Get All Requests (Happens in TruckerRequestsList.js)
-@api.route('/request', methods=['GET'])
-def get_requests():
-    
-    requests_query = Request.query.all()
-    all_requests = list(map(lambda x: x.serialize(), requests_query))
-
-    return jsonify(
-        all_requests
-    ), 200
-
-#Get Requests of Specific User
-@api.route('/request/user/client/<user_id>', methods=['GET'])
-def get_user_requests(user_id):
-    
-    requests_query = Request.query.filter_by(user_id=user_id)
-    user_requests = list(map(lambda x: x.serialize(), requests_query))
-
-    return jsonify(
-        user_requests
-    ), 200
-
-#Get Trucker Accepted Requests (Happens in TruckerRequestsList.js)
-@api.route('/request/user/trucker/<user_id>', methods=['GET'])
-def get_trucker_requests(user_id):
-    
-    requests_query = Request.query.filter_by(user_id=user_id)
-    accepted_request = list(map(lambda x: x.serialize(), requests_query))
-
-    return jsonify(
-        accepted_request
-    ), 200
-
-#Post New Request
-@api.route('/request', methods=['POST'])
-def add_request():
+    my_deal = Deal.query.get(id)
 
     body = request.get_json()
 
-    new_request = Request(
-        zip_code=body["zip_code"], 
-        service=body["service"], 
-        vehicle=body["vehicle"],
-        completed="",
-        finished="",
-        trucker_id="",
-        trucker_name="",
-        trucker_phone="",
-        trucker_rating="",
-        user_id=body["user_id"],
-        client_name=body["client_name"],
-        client_phone=body["client_phone"],
+    my_deal.status = body["status"]
+
+    db.session.commit()
+
+    deals_query = Deal.query.get(id)
+
+    if deals_query.status == body["status"]:
+        return jsonify(deals_query.serialize()), 200
+    raise APIException("Update Failed")
+
+#Update Deal as Lost
+@api.route('/deal/lost/<id>', methods=['PUT'])
+def lost_deal(id):
+    
+    my_deal = Deal.query.get(id)
+
+    body = request.get_json()
+
+    my_deal.status = body["status"]
+
+    db.session.commit()
+
+    deals_query = Deal.query.get(id)
+
+    if deals_query.status == body["status"]:
+        return jsonify(deals_query.serialize()), 200
+    raise APIException("Update Failed")
+
+#Get Won Deals
+@api.route('/deal/won', methods=['GET'])
+def get_won_deals():
+    
+    deals_query = Deal.query.filter_by(status="won")
+    won_deals = list(map(lambda x: x.serialize(), deals_query))
+
+    return jsonify(
+        won_deals
+    ), 200
+
+#Get Lost Deals
+@api.route('/deal/lost', methods=['GET'])
+def get_lost_deals():
+    
+    deals_query = Deal.query.filter_by(status="lost")
+    lost_deals = list(map(lambda x: x.serialize(), deals_query))
+
+    return jsonify(
+        lost_deals
+    ), 200
+
+#Delete Deal
+@api.route('/deal/<id>', methods=['DELETE'])
+def delete_deal(id):
+
+    body = request.get_json()
+    
+    deal = Deal.query.get(id)
+
+    db.session.delete(deal)
+    db.session.commit()
+
+    deals_query = Deal.query.all()
+    all_deals = list(map(lambda x: x.serialize(), deals_query))
+    return jsonify(all_deals), 200
+    
+#Contact Methods ------------------------------------------------------------
+
+#Get All Contacts
+@api.route('/contact', methods=['GET'])
+def get_all_contacts():
+    
+    contacts_query = Contact.query.all()
+    all_contacts = list(map(lambda x: x.serialize(), contacts_query))
+
+    return jsonify(
+        all_contacts
+    ), 200
+
+#Get Contact by ID
+@api.route('/contact/<id>', methods=['GET'])
+def get_contact_by_id(id):
+    
+    contacts_query = Contact.query.filter_by(id=id)
+    contact_by_id = list(map(lambda x: x.serialize(), contact_by_id))
+
+    return jsonify(
+        contact_by_id
+    ), 200
+
+#Get Contact by Email
+@api.route('/contact/email/<email>', methods=['GET'])
+def get_contact_by_email(email):
+    
+    contacts_query = Contact.query.filter_by(email=email)
+    contact_by_email = list(map(lambda x: x.serialize(), contact_by_id))
+
+    return jsonify(
+        contact_by_email
+    ), 200
+
+#Get Contact by Name
+@api.route('/contact/name/<full_name>', methods=['GET'])
+def get_contact_by_name(full_name):
+    
+    contacts_query = Contact.query.filter_by(full_name=full_name)
+    contact_by_name = list(map(lambda x: x.serialize(), contact_by_name))
+
+    return jsonify(
+        contact_by_name
+    ), 200
+
+#Post New Contact
+@api.route('/contact', methods=['POST'])
+def add_new_contact():
+
+    body = request.get_json()
+
+    new_contact = Contact(
+        full_name=body["full_name"],
+        email=body["email"],
+        phone=body["phone"]
     )
 
-    db.session.add(new_request)
+    db.session.add(new_contact)
     db.session.commit()
 
-    requests_query = Request.query.all()
-    all_requests = list(map(lambda x: x.serialize(), requests_query))
-    return jsonify(all_requests), 200
+    contacts_query = Contact.query.all()
+    all_contacts = list(map(lambda x: x.serialize(), contacts_query))
+    return jsonify(all_contacts), 200
 
-#Delete Request
-@api.route('/request/<id>', methods=['DELETE'])
-def delete_request(id):
+#Update Contact Details
+@api.route('/contact/details/<id>', methods=['PUT'])
+def update_contact_details(id):
+
+    my_contact = Contact.query.get(id)
+
+    body = request.get_json()
+
+    my_contact.full_name = body["full_name"]
+    my_contact.email = body["email"]
+    my_contact.phone = body["phone"]
+
+    db.session.commit()
+
+    contacts_query = Contact.query.get(id)
+
+    if contacts_query.full_name == body["full_name"]:
+        return jsonify(contacts_query.serialize()), 200
+    raise APIException("Update Failed")
+
+#Delete Contact
+@api.route('/contact/<id>', methods=['DELETE'])
+def delete_contact(id):
     
-    my_request =  Request.query.get(id)
+    my_contact =  Contact.query.get(id)
 
     body = request.get_json()
 
-    db.session.delete(my_request)
+    db.session.delete(my_contact)
     db.session.commit()
 
-    requests_query = Request.query.all()
-    all_requests = list(map(lambda x: x.serialize(), requests_query))
-    return jsonify(all_requests), 200
-
-#Trucker Service Management Methods -----------------------------------------
-
-#Update Request as Accepted (Happens in TruckerRequestsList.js)
-@api.route('/request/accepted/<id>', methods=['PUT'])
-def accept_request(id):
-    
-    my_request = Request.query.get(id)
-
-    body = request.get_json()
-
-    my_request.trucker_id = body["trucker_id"]
-    my_request.trucker_name = body["trucker_name"]
-    my_request.trucker_phone = body["trucker_phone"]
-
-    db.session.commit()
-
-    request_query = Request.query.get(id)
-
-    if request_query.trucker_id == body["trucker_id"]:
-        return jsonify(request_query.serialize()), 200
-    raise APIException("Update Failed")
-
-#Update Request as Completed (Happens in TruckerServiceManagement.js)
-@api.route('/request/completed/<id>', methods=['PUT'])
-def complete_request(id):
-
-    my_request = Request.query.get(id)
-
-    body = request.get_json()
-
-    my_request.completed = body["completed"]
-
-    db.session.commit()
-
-    request_query = Request.query.get(id)
-
-    if request_query.completed == body["completed"]:
-        return jsonify(request_query.serialize()), 200
-    raise APIException("Update Failed")
-
-#Update Request as Finished
-@api.route('/request/finished/<id>', methods=['PUT'])
-def finish_request(id):
-
-    my_request = Request.query.get(id)
-
-    body = request.get_json()
-
-    my_request.finished = body["finished"]
-
-    db.session.commit()
-
-    request_query = Request.query.get(id)
-
-    if request_query.finished == body["finished"]:
-        return jsonify(request_query.serialize()), 200
-    raise APIException("Update Failed")
+    contacts_query = Contact.query.all()
+    all_contacts = list(map(lambda x: x.serialize(), contacts_query))
+    return jsonify(all_contacts), 200
