@@ -29,63 +29,58 @@ export const SignUpPage = () => {
   };
 
   return (
-    <div className="container p-4 text-start text-dark fs-6">
+    <div className="container p-4 pt-3 text-start text-dark fs-6">
       <h1 className="m-3 text-center">Sign Up Page</h1>
-      <div className="row">
-        <div className="col" />
-        <div className="col-2 m-2 mb-1 text-dark">
-          <form className="text-start">
-            <div className="form-group my-1">
-              <label>Full Name</label>
-              <input
-                type="text"
-                className="form-control"
-                placeholder="Full Name"
-                name="full_name"
-                onChange={handleChange}
-              />
-            </div>
-            <div className="form-group my-1">
-              <label>Email</label>
-              <input
-                type="email"
-                className="form-control"
-                placeholder="Enter email"
-                name="email"
-                onChange={handleChange}
-              />
-            </div>
-            <div className="form-group my-1">
-              <label>Password</label>
-              <input
-                type="password"
-                className="form-control"
-                placeholder="Enter Password"
-                name="password"
-                onChange={handleChange}
-              />
-            </div>
-            <div className="form-group my-1">
-              <label>Phone</label>
-              <input
-                type="phone"
-                className="form-control"
-                placeholder="Enter phone"
-                name="phone"
-                onChange={handleChange}
-              />
-            </div>
-          </form>
-          <Link to="/LoginPage">
-            <button
-              className="btn btn-primary btn-lg col-4 p-2 mt-3 mb-5"
-              onClick={() => addUser(newUser)}
-            >
-              Save
-            </button>
-          </Link>
+      <form className="text-start">
+        <div className="form-group my-1">
+          <label>Full Name</label>
+          <input
+            type="text"
+            className="form-control"
+            placeholder="Full Name"
+            name="full_name"
+            onChange={handleChange}
+          />
         </div>
-      </div>
+        <div className="form-group my-1">
+          <label>Email</label>
+          <input
+            type="email"
+            className="form-control"
+            placeholder="Enter email"
+            name="email"
+            onChange={handleChange}
+          />
+        </div>
+        <div className="form-group my-1">
+          <label>Password</label>
+          <input
+            type="password"
+            className="form-control"
+            placeholder="Enter Password"
+            name="password"
+            onChange={handleChange}
+          />
+        </div>
+        <div className="form-group my-1">
+          <label>Phone</label>
+          <input
+            type="phone"
+            className="form-control"
+            placeholder="Enter phone"
+            name="phone"
+            onChange={handleChange}
+          />
+        </div>
+      </form>
+      <Link to="/LoginPage">
+        <button
+          className="btn btn-primary btn-lg col-4 p-2 mt-3 mb-5"
+          onClick={() => addUser(newUser)}
+        >
+          Save
+        </button>
+      </Link>
     </div>
   );
 };

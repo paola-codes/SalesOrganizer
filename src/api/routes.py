@@ -150,7 +150,8 @@ def add_new_deal():
         win_reasons="",
         notes=body["notes"],
         estimated_close_date=body["estimated_close_date"],
-        contact_id=body["contact_id"]
+        contact_id=body["contact_id"],
+        user_id=body["user_id"]
     )
 
     db.session.add(new_deal)
@@ -316,7 +317,8 @@ def add_new_contact():
     new_contact = Contact(
         full_name=body["full_name"],
         email=body["email"],
-        phone=body["phone"]
+        phone=body["phone"],
+        user_id=body["user_id"]
     )
 
     db.session.add(new_contact)
