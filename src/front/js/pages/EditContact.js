@@ -62,7 +62,7 @@ export const EditContact = () => {
       </form>
       <Link to="/HomePage">
         <button
-          className="btn btn-warning btn-lg p-2 w-75 m-auto my-3"
+          className="btn btn-primary btn-lg p-2 w-75 m-auto my-3"
           onClick={() => {
             actions.updateContactDetails(updatedContact, id);
           }}

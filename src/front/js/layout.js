@@ -4,7 +4,7 @@ import { BrowserRouter, Route, Switch, useLocation } from "react-router-dom";
 import ScrollToTop from "./component/scrollToTop";
 
 import { Home } from "./pages/home";
-import { Navbar } from "./component/navbar";
+import { navbar } from "./component/navbar";
 
 //Contacts
 import { AddContact } from "./pages/AddContact";
@@ -40,7 +40,7 @@ const Layout = () => {
     <div>
       <BrowserRouter basename={basename}>
         <ScrollToTop>
-          <Navbar />
+          <navbar />
           <Switch>
             <Route exact path="/">
               <Home />

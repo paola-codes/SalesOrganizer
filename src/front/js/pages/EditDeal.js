@@ -16,7 +16,6 @@ export const EditDeal = () => {
 
   const [updatedDeal, setUpdatedDeal] = useState(deal);
 
-
   const handleChange = (e) =>
     setUpdatedDeal({ ...updatedDeal, [e.target.name]: e.target.value });
 
@@ -63,7 +62,7 @@ export const EditDeal = () => {
       </form>
       <Link to="/HomePage">
         <button
-          className="btn btn-warning btn-lg p-2 w-75 m-auto my-3"
+          className="btn btn-primary btn-lg p-2 w-75 m-auto my-3"
           onClick={() => {
             actions.updateDealDetails(updatedDeal, id);
           }}

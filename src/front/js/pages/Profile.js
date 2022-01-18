@@ -30,12 +30,12 @@ export const Profile = () => {
       </div>
       <div className="row my-3 d-flex flex-column justify-content-center">
         <Link to="/EditProfile">
-          <button className="btn btn-warning btn-lg p-2 w-75 m-auto my-3">
+          <button className="btn btn-dark btn-lg p-2 w-75 m-auto my-3">
             Edit Profile
           </button>
         </Link>
         <Link to="/HomePage">
-          <button className="btn btn-warning btn-lg p-2 w-75 m-auto my-3">
+          <button className="btn btn-secondary btn-lg p-2 w-75 m-auto my-3">
             Back to Home
           </button>
         </Link>

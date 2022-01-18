@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import salesOrg from "../../img/salesOrg.png";
 import { Context } from "../store/appContext";
 
-export const Navbar = () => {
+export const navbar = () => {
   const { actions } = useContext(Context);
 
   return (

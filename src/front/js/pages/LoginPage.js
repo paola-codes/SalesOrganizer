@@ -57,7 +57,7 @@ export const LoginPage = (props) => {
 
       <button
         type="button"
-        className="btn btn-warning btn-lg p-2 m-0 mt-3"
+        className="btn btn-primary btn-lg p-2 m-0 mt-3"
         onClick={() => {
           myFetch(user);
           actions.getContacts();

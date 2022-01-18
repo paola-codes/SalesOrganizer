@@ -78,7 +78,7 @@ export const SignUpPage = () => {
           </form>
           <Link to="/LoginPage">
             <button
-              className="btn btn-warning btn-lg col-4 p-2 mt-3 mb-5"
+              className="btn btn-primary btn-lg col-4 p-2 mt-3 mb-5"
               onClick={() => addUser(newUser)}
             >
               Save

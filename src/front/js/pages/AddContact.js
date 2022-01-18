@@ -53,7 +53,7 @@ export const AddContact = () => {
         </form>
         <Link to="/HomePage">
           <button
-            className="btn btn-warning btn-lg p-2 m-3"
+            className="btn btn-primary btn-lg p-2 m-3"
             onClick={() => {
               actions.addContact(newContact);
             }}
@@ -62,7 +62,7 @@ export const AddContact = () => {
           </button>
         </Link>
         <Link to="/HomePage">
-          <button className="btn btn-warning btn-lg p-2 m-3">Home</button>
+          <button className="btn btn-primary btn-lg p-2 m-3">Home</button>
         </Link>
       </div>
     </div>

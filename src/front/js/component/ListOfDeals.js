@@ -16,7 +16,7 @@ export const ListOfDeals = () => {
           ? store.listOfDeals.map((deal, index) => {
               return (
                 <li
-                  className="list-group-item d-flex flex-column mx-1 mb-3 shadow-lg border border-warning border-4 rounded-3"
+                  className="list-group-item d-flex flex-column mx-1 mb-3 shadow-lg border border-primary border-4 rounded-3"
                   key={index}
                 >
                   <p className="mx-2 m-1 text-start">
@@ -38,9 +38,7 @@ export const ListOfDeals = () => {
                       </button>
                     </Link>
                     <Link to={`/EditDeal/${deal.id}`}>
-                      <button className="btn btn-dark m-2 fs-5">
-                        Edit
-                      </button>
+                      <button className="btn btn-dark m-2 fs-5">Edit</button>
                     </Link>
                     <button
                       type="button"
@@ -56,10 +54,10 @@ export const ListOfDeals = () => {
           : "Loading..."}
       </ul>
       <Link to="/AddDeal">
-        <button className="btn btn-warning btn-lg p-2 m-3">Add Deal</button>
+        <button className="btn btn-primary btn-lg p-2 m-3">Add Deal</button>
       </Link>
       <Link to="/HomePage">
-        <button className="btn btn-warning btn-lg p-2 m-3">Home</button>
+        <button className="btn btn-primary btn-lg p-2 m-3">Home</button>
       </Link>
     </div>
   );

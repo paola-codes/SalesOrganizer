@@ -8,6 +8,8 @@ class User(db.Model):
     email = db.Column(db.String(120), unique=False, nullable=True)
     password = db.Column(db.String(80), unique=False, nullable=True)
     phone = db.Column(db.String(120), unique=False, nullable=True)
+    contact = db.relationship('Contact', backref='user')
+    deal = db.relationship('Deal', backref='user')
 
     def __repr__(self):
         return '<User %r>' % self.full_name
@@ -18,6 +20,8 @@ class User(db.Model):
             "full_name": self.full_name,
             "email": self.email,
             "phone": self.phone,
+            "contact": [deal.serialize() for contact in self.contact],
+            "deal": [deal.serialize() for deal in self.deal],
             # do not serialize the password, its a security breach
         }
 
@@ -29,6 +33,7 @@ class Contact(db.Model):
     phone = db.Column(db.String(120), unique=False, nullable=True)
     #Relationships
     deal = db.relationship('Deal', backref='contact')
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), unique=False, nullable=True)
     
     def __repr__(self):
         return '<Contact %r>' % self.full_name
@@ -40,6 +45,7 @@ class Contact(db.Model):
             "email": self.email,
             "phone": self.phone,
             "deal": [deal.serialize() for deal in self.deal],
+            "user_id": self.user_id,
             # do not serialize the password, its a security breach
         }
 
@@ -59,6 +65,7 @@ class Deal(db.Model):
     estimated_close_date = db.Column(db.String(80), unique=False, nullable=True)
     #Foreign Keys
     contact_id = db.Column(db.Integer, db.ForeignKey('contact.id'), unique=False, nullable=True)
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), unique=False, nullable=True)
 
     def __repr__(self):
         return '<Deal %r>' % self.client_name # add more representations
@@ -77,5 +84,7 @@ class Deal(db.Model):
             "win_reasons": self.win_reasons,
             "notes": self.notes,
             "estimated_close_date": self.estimated_close_date,
+            "contact_id": self.contact_id,
+            "user_id": self.user_id,
         }
 

@@ -142,7 +142,7 @@ export const AddDeal = () => {
         </form>
         <Link to="/HomePage">
           <button
-            className="btn btn-warning btn-lg p-2 m-3"
+            className="btn btn-primary btn-lg p-2 m-3"
             onClick={() => {
               actions.addDeal(newDeal);
             }}
@@ -151,7 +151,7 @@ export const AddDeal = () => {
           </button>
         </Link>
         <Link to="/HomePage">
-          <button className="btn btn-warning btn-lg p-2 m-3">Home</button>
+          <button className="btn btn-primary btn-lg p-2 m-3">Home</button>
         </Link>
       </div>
     </div>

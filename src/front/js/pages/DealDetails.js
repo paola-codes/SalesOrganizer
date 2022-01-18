@@ -87,7 +87,7 @@ export const DealDetails = () => {
         <div className="row d-inline-flex justify-content-start p-0 m-0">
           <div className="col p-0 ms-3">
             <Link to={`/EditDeal/${id}`}>
-              <button type="button" className="btn btn-warning me-3 m-0 fs-5">
+              <button type="button" className="btn btn-dark me-3 m-0 fs-5">
                 Edit Deal
               </button>
             </Link>
@@ -101,7 +101,7 @@ export const DealDetails = () => {
             </button>
 
             <Link to="/HomePage">
-              <button type="button" className="btn btn-primary me-3 fs-5">
+              <button type="button" className="btn btn-secondary me-3 fs-5">
                 Home
               </button>
             </Link>

@@ -16,7 +16,7 @@ export const Home = () => {
       <h3 className="my-3">If you want to get started, sign up now!</h3>
       <div className="my-4">
         <Link to="/SignUpPage">
-          <button className="btn btn-warning btn-lg">Sign Up Now!</button>
+          <button className="btn btn-primary btn-lg">Sign Up Now!</button>
         </Link>
       </div>
 
@@ -24,7 +24,7 @@ export const Home = () => {
       <h3 className="my-3">Sign in below!</h3>
       <div className="my-4">
         <Link to="/LoginPage">
-          <button className="btn btn-warning btn-lg mb-5">Sign In</button>
+          <button className="btn btn-primary btn-lg mb-5">Sign In</button>
         </Link>
       </div>
 
