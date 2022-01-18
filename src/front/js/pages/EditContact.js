@@ -1,15 +1,20 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { Context } from "../store/appContext";
 
-export const listOfContacts = () => {
+export const EditContact = () => {
   const { store, actions } = useContext(Context);
 
-  const [updatedContact, setUpdatedContact] = useState({
-    full_name: contact.full_name,
-    email: contact.full_name,
-    phone: contact.full_name,
+  const { id } = useParams();
+
+  let contact = store.ListOfContacts.find((item, index) => {
+    if (item.id == id) {
+      return item;
+    }
   });
+
+  const [updatedContact, setUpdatedContact] = useState(contact);
 
   const handleChange = (e) =>
     setUpdatedContact({ ...updatedContact, [e.target.name]: e.target.value });
@@ -59,7 +64,7 @@ export const listOfContacts = () => {
         <button
           className="btn btn-warning btn-lg p-2 w-75 m-auto my-3"
           onClick={() => {
-            actions.updateContact(updatedContact, contact.id);
+            actions.updateContactDetails(updatedContact, id);
           }}
         >
           Save Changes

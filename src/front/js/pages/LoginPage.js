@@ -5,19 +5,19 @@ import { Context } from "../store/appContext";
 export const LoginPage = (props) => {
   const { actions, store } = useContext(Context);
 
-  const [newContact, setnewContact] = useState({
+  const [user, setUser] = useState({
     email: null,
     password: null,
   });
 
   const handleChange = (e) =>
-    setnewContact({ ...newContact, [e.target.name]: e.target.value });
+    setUser({ ...user, [e.target.name]: e.target.value });
 
-  const myFetch = (contactInfo) => {
+  const myFetch = (userInfo) => {
     fetch(`${store.backEndUrl}/api/login`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(contactInfo),
+      body: JSON.stringify(userInfo),
     })
       .then((response) => response.json())
       .then((data) => {
@@ -58,7 +58,11 @@ export const LoginPage = (props) => {
       <button
         type="button"
         className="btn btn-warning btn-lg p-2 m-0 mt-3"
-        onClick={() => myFetch(newContact)}
+        onClick={() => {
+          myFetch(user);
+          actions.getContacts();
+          actions.getDeals();
+        }}
       >
         Next
       </button>
@@ -68,5 +72,4 @@ export const LoginPage = (props) => {
 
 LoginPage.propTypes = {
   history: PropTypes.object,
-  setUserLogin: PropTypes.func,
 };

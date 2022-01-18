@@ -1,15 +1,21 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { Context } from "../store/appContext";
 
-export const listOfDeals = () => {
+export const EditDeal = () => {
   const { store, actions } = useContext(Context);
 
-  const [updatedDeal, setUpdatedDeal] = useState({
-    full_name: deal.full_name,
-    email: deal.full_name,
-    phone: deal.full_name,
+  const { id } = useParams();
+
+  let deal = store.ListOfDeals.find((item, index) => {
+    if (item.id == id) {
+      return item;
+    }
   });
+
+  const [updatedDeal, setUpdatedDeal] = useState(deal);
+
 
   const handleChange = (e) =>
     setUpdatedDeal({ ...updatedDeal, [e.target.name]: e.target.value });
@@ -59,7 +65,7 @@ export const listOfDeals = () => {
         <button
           className="btn btn-warning btn-lg p-2 w-75 m-auto my-3"
           onClick={() => {
-            actions.updateDeal(updatedDeal, deal.id);
+            actions.updateDealDetails(updatedDeal, id);
           }}
         >
           Save Changes

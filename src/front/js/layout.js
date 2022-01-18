@@ -61,10 +61,10 @@ const Layout = () => {
             <Route exact path="/AddContact">
               <AddContact />
             </Route>
-            <Route exact path="/EditContact">
+            <Route exact path="/EditContact/:id">
               <EditContact />
             </Route>
-            <Route exact path="/ContactDetails">
+            <Route exact path="/ContactDetails/:id">
               <ContactDetails />
             </Route>
             <Route exact path="/ListOfContacts">
@@ -74,10 +74,10 @@ const Layout = () => {
             <Route exact path="/AddDeal">
               <AddDeal />
             </Route>
-            <Route exact path="/EditDeal">
+            <Route exact path="/EditDeal/:id">
               <EditDeal />
             </Route>
-            <Route exact path="/DealDetails">
+            <Route exact path="/DealDetails/:id">
               <DealDetails />
             </Route>
             <Route exact path="/ListOfDeals">

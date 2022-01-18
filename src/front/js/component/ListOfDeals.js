@@ -2,12 +2,12 @@ import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { Context } from "../store/appContext";
 
-export const listOfDeals = () => {
+export const ListOfDeals = () => {
   const { store, actions } = useContext(Context);
 
   return (
     <div className="container text-center text-dark mt-3 p-4">
-      <h1 className="text-center my-5">Add Deal</h1>
+      <h1 className="text-center my-5">Deals List</h1>
       <ul
         className="list-group position-relative mx-auto"
         style={{ width: "70%" }}
@@ -32,6 +32,16 @@ export const listOfDeals = () => {
                     <strong>Status:</strong> {deal.status}
                   </p>
                   <p className="text-center m-1 mt-3">
+                    <Link to={`/DealDetails/${deal.id}`}>
+                      <button className="btn btn-primary m-2 fs-5">
+                        Details
+                      </button>
+                    </Link>
+                    <Link to={`/EditDeal/${deal.id}`}>
+                      <button className="btn btn-dark m-2 fs-5">
+                        Edit
+                      </button>
+                    </Link>
                     <button
                       type="button"
                       className="btn btn-danger mx-2 mb-0 px-1"
