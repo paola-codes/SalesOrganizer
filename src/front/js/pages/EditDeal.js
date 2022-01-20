@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import { Context } from "../store/appContext";
@@ -8,7 +8,7 @@ export const EditDeal = () => {
 
   const { id } = useParams();
 
-  let deal = store.ListOfDeals.find((item, index) => {
+  let deal = store.listOfDeals.find((item, index) => {
     if (item.id == id) {
       return item;
     }

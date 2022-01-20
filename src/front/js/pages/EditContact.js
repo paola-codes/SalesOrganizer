@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import { Context } from "../store/appContext";
@@ -8,7 +8,7 @@ export const EditContact = () => {
 
   const { id } = useParams();
 
-  let contact = store.ListOfContacts.find((item, index) => {
+  let contact = store.listOfContacts.find((item, index) => {
     if (item.id == id) {
       return item;
     }
