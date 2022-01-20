@@ -6,11 +6,11 @@ export const ListOfDeals = () => {
   const { store, actions } = useContext(Context);
 
   return (
-    <div className="container text-center text-dark mt-3 p-0">
+    <div className="container text-center text-dark mt-0 p-0">
       <h1 className="text-center mb-3">Deals List</h1>
       <ul
         className="list-group position-relative mx-auto mt-2"
-        style={{ width: "70%" }}
+        style={{ width: "80%" }}
       >
         {store.listOfDeals.length > 0
           ? store.listOfDeals.map((deal, index) => {

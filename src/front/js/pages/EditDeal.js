@@ -21,11 +21,9 @@ export const EditDeal = () => {
 
   return (
     <div className="container py-4 px-3 text-center text-dark fs-4 my-3">
-      <h1 className="text-center my-5">Edit Deal Information</h1>
+      <h1 className="text-center mb-2">Edit Deal Information</h1>
 
-      <h2>Change deal information on the fields below</h2>
-
-      <form className="text-start">
+      <form className="text-start my-3">
         <div className="form-group my-1">
           <label>Deal Title</label>
           <input
@@ -70,25 +68,24 @@ export const EditDeal = () => {
             value={updatedDeal.deal_value}
           />
         </div>
-        <label className="list-group-item d-flex align-items-center m-0">
-          <select
-            id="inputState"
-            className="form-select my-1 shadow-sm"
-            name="client_name"
-            onChange={handleChange}
-            defaultValue={"DEFAULT"}
-            value={updatedDeal.client_name}
-          >
-            <option value="DEFAULT">
-              Client Name: {updatedDeal.deal_value}
-            </option>
-            {store.listOfContacts.length > 0
-              ? store.listOfContacts.map((contact, index) => {
-                  return <option key={index}>{contact.full_name}</option>;
-                })
-              : "Loading..."}
-          </select>
-        </label>
+        <div className="form-group my-2">
+          <label>Client Name</label>
+          <label className="list-group-item d-flex align-items-start p-0 m-0">
+            <select
+              id="inputState"
+              className="form-select m-0"
+              name="client_name"
+              onChange={handleChange}
+              value={updatedDeal.client_name}
+            >
+              {store.listOfContacts.length > 0
+                ? store.listOfContacts.map((contact, index) => {
+                    return <option key={index}>{contact.full_name}</option>;
+                  })
+                : "Loading..."}
+            </select>
+          </label>
+        </div>
         <div className="form-group my-2">
           <label>Expected Product</label>
           <input
@@ -156,16 +153,22 @@ export const EditDeal = () => {
           />
         </div>
       </form>
-      <Link to="/HomePage">
-        <button
-          className="btn btn-primary btn-lg p-2 w-75 m-auto my-3"
-          onClick={() => {
-            actions.updateDealDetails(updatedDeal, id);
-          }}
-        >
-          Save Changes
-        </button>
-      </Link>
+      <div className="row d-inline-flex justify-content-start p-0 m-0">
+        <Link to="/HomePage">
+          <button
+            className="btn btn-primary mb-3 me-3 m-0 fs-5"
+            onClick={() => {
+              actions.updateDealDetails(updatedDeal, id);
+            }}
+          >
+            Save Changes
+          </button>
+        </Link>
+
+        <Link to="/HomePage">
+          <button className="btn btn-secondary me-3 m-0 fs-5">Home</button>
+        </Link>
+      </div>
     </div>
   );
 };

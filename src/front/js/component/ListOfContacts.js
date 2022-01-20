@@ -10,7 +10,7 @@ export const ListOfContacts = () => {
       <h1 className="text-center mb-3">Contacts List</h1>
       <ul
         className="list-group position-relative mx-auto mt-2"
-        style={{ width: "70%" }}
+        style={{ width: "80%" }}
       >
         {store.listOfContacts.length > 0
           ? store.listOfContacts.map((contact, index) => {

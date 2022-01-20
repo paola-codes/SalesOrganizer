@@ -12,19 +12,22 @@ export const ListOfDealsPage = () => {
 
   return (
     <div className="container py-4 px-3 text-center text-dark fs-4 mt-0">
-      <h1 className="text-center mt-3 mb-1">List Of Deals</h1>
-      <div className="row m-0 d-flex justify-content-center">
-        <Link to="/AddDeal">
-          <button className="btn btn-primary btn-lg p-2 w-75 m-auto my-3">
-            Add Deal
-          </button>
-        </Link>
-        <Link to="/HomePage">
-          <button className="btn btn-primary btn-lg p-2 m-3">Home</button>
-        </Link>
-        <div className="my-3">
-          <ListOfDeals />
+      <h1 className="text-center mt-2 mb-1">List Of Deals</h1>
+      <div className="row mt-4 d-flex justify-content-center">
+        <div className="col-10 d-inline-flex justify-content-center">
+          <Link to="/AddDeal">
+            <button className="btn btn-primary fs-4 p-2 mt-2 mb-4 mx-2">
+              Add Deal
+            </button>
+          </Link>
+          <Link to="/HomePage">
+            <button className="btn btn-primary fs-4 p-2 mt-2 mb-4 mx-2">
+              Home
+            </button>
+          </Link>
         </div>
+
+        <ListOfDeals />
       </div>
     </div>
   );

@@ -27,7 +27,7 @@ export const AddDeal = () => {
   return (
     <div className="container p-4 text-center text-dark fs-6 m-auto mt-3">
       <div>
-        <h1 className="text-center my-5">Add New Deal</h1>
+        <h1 className="text-center mt-2 mb-3">Add New Deal</h1>
         <form className="text-start">
           <div className="form-group my-2">
             <label>Title</label>
