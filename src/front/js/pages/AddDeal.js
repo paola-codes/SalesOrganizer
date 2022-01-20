@@ -13,7 +13,7 @@ export const AddDeal = () => {
     deal_value: "",
     client_name: "",
     expected_product: "",
-    status: "In Progress",
+    status: "started",
     loss_reasons: "",
     win_reasons: "",
     notes: "",
@@ -69,16 +69,24 @@ export const AddDeal = () => {
               onChange={handleChange}
             />
           </div>
-          <div className="form-group my-2">
-            <label>Client Name</label>
-            <input
-              type="text"
-              className="form-control"
-              placeholder="Ex. Joe Fisher"
+          <label className="list-group-item d-flex align-items-center m-0">
+            <select
+              id="inputState"
+              className="form-select my-1 shadow-sm"
               name="client_name"
               onChange={handleChange}
-            />
-          </div>
+              defaultValue={"DEFAULT"}
+            >
+              <option value="DEFAULT">
+                Client Name: Ex. Andrea Villarroel
+              </option>
+              {store.listOfContacts.length > 0
+                ? store.listOfContacts.map((contact, index) => {
+                    return <option key={index}>{contact.full_name}</option>;
+                  })
+                : "Loading..."}
+            </select>
+          </label>
           <div className="form-group my-2">
             <label>Expected Product</label>
             <input

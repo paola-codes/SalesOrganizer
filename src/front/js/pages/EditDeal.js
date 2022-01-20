@@ -27,36 +27,132 @@ export const EditDeal = () => {
 
       <form className="text-start">
         <div className="form-group my-1">
-          <label>Full Name</label>
+          <label>Deal Title</label>
           <input
             type="text"
             className="form-control"
-            placeholder="Edit Full Name"
-            name="full_name"
+            placeholder="Edit Deal Title"
+            name="deal_title"
             onChange={handleChange}
-            value={updatedDeal.full_name}
+            value={updatedDeal.deal_title}
           />
         </div>
-        <div className="form-group my-1">
-          <label>Email</label>
-          <input
-            type="email"
-            className="form-control"
-            placeholder="Edit email"
-            name="email"
-            onChange={handleChange}
-            value={updatedDeal.email}
-          />
-        </div>
-        <div className="form-group my-1">
-          <label>Phone</label>
+        <div className="form-group my-2">
+          <label>Description</label>
           <input
             type="text"
             className="form-control"
-            placeholder="Edit Phone Number"
-            name="phone"
+            placeholder="Edit Description"
+            name="description"
             onChange={handleChange}
-            value={updatedDeal.phone}
+            value={updatedDeal.description}
+          />
+        </div>
+        <div className="form-group my-2">
+          <label>Deal Owner</label>
+          <input
+            type="text"
+            className="form-control"
+            placeholder="Edit Deal Owner"
+            name="deal_owner"
+            onChange={handleChange}
+            value={updatedDeal.deal_owner}
+          />
+        </div>
+        <div className="form-group my-2">
+          <label>Deal Value</label>
+          <input
+            type="text"
+            className="form-control"
+            placeholder="Edit Deal Value"
+            name="deal_value"
+            onChange={handleChange}
+            value={updatedDeal.deal_value}
+          />
+        </div>
+        <label className="list-group-item d-flex align-items-center m-0">
+          <select
+            id="inputState"
+            className="form-select my-1 shadow-sm"
+            name="client_name"
+            onChange={handleChange}
+            defaultValue={"DEFAULT"}
+            value={updatedDeal.client_name}
+          >
+            <option value="DEFAULT">
+              Client Name: {updatedDeal.deal_value}
+            </option>
+            {store.listOfContacts.length > 0
+              ? store.listOfContacts.map((contact, index) => {
+                  return <option key={index}>{contact.full_name}</option>;
+                })
+              : "Loading..."}
+          </select>
+        </label>
+        <div className="form-group my-2">
+          <label>Expected Product</label>
+          <input
+            type="text"
+            className="form-control"
+            placeholder="Edit Expected Product"
+            name="expected_product"
+            onChange={handleChange}
+            value={updatedDeal.expected_product}
+          />
+        </div>
+        <div className="form-group my-2">
+          <label>Status</label>
+          <input
+            type="text"
+            className="form-control"
+            placeholder="Edit Status"
+            name="status"
+            onChange={handleChange}
+            value={updatedDeal.status}
+          />
+        </div>
+        <div className="form-group my-2">
+          <label>Loss Reasons</label>
+          <input
+            type="text"
+            className="form-control"
+            placeholder="Edit Loss Reasons"
+            name="loss_reasons"
+            onChange={handleChange}
+            value={updatedDeal.loss_reasons}
+          />
+        </div>
+        <div className="form-group my-2">
+          <label>Win Reasons</label>
+          <input
+            type="text"
+            className="form-control"
+            placeholder="Edit Win Reasons"
+            name="win_reasons"
+            onChange={handleChange}
+            value={updatedDeal.win_reasons}
+          />
+        </div>
+        <div className="form-group my-2">
+          <label>Notes</label>
+          <input
+            type="text"
+            className="form-control"
+            placeholder="Edit Notes"
+            name="notes"
+            onChange={handleChange}
+            value={updatedDeal.notes}
+          />
+        </div>
+        <div className="form-group my-2">
+          <label>Estimated Close Date</label>
+          <input
+            type="text"
+            className="form-control"
+            placeholder="Edit Estimated Close Date"
+            name="estimated_close_date"
+            onChange={handleChange}
+            value={updatedDeal.estimated_close_date}
           />
         </div>
       </form>
