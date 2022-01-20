@@ -6,10 +6,10 @@ export const ListOfDeals = () => {
   const { store, actions } = useContext(Context);
 
   return (
-    <div className="container text-center text-dark mt-3 p-4">
-      <h1 className="text-center my-5">Deals List</h1>
+    <div className="container text-center text-dark mt-3 p-0">
+      <h1 className="text-center mb-3">Deals List</h1>
       <ul
-        className="list-group position-relative mx-auto"
+        className="list-group position-relative mx-auto mt-2"
         style={{ width: "70%" }}
       >
         {store.listOfDeals.length > 0
@@ -33,7 +33,10 @@ export const ListOfDeals = () => {
                   </p>
                   <p className="text-center m-1 mt-3">
                     <Link to={`/DealDetails/${deal.id}`}>
-                      <button className="btn btn-primary m-2 fs-5">
+                      <button
+                        className="btn btn-primary m-2 fs-5"
+                        onClick={() => actions.getDeals()}
+                      >
                         Details
                       </button>
                     </Link>
@@ -53,12 +56,6 @@ export const ListOfDeals = () => {
             })
           : "Loading..."}
       </ul>
-      <Link to="/AddDeal">
-        <button className="btn btn-primary btn-lg p-2 m-3">Add Deal</button>
-      </Link>
-      <Link to="/HomePage">
-        <button className="btn btn-primary btn-lg p-2 m-3">Home</button>
-      </Link>
     </div>
   );
 };

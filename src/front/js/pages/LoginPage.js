@@ -1,6 +1,7 @@
 import React, { useState, useContext } from "react";
 import { PropTypes } from "prop-types";
 import { Context } from "../store/appContext";
+import { Link } from "react-router-dom";
 
 export const LoginPage = (props) => {
   const { actions, store } = useContext(Context);
@@ -55,17 +56,19 @@ export const LoginPage = (props) => {
         </div>
       </form>
 
-      <button
-        type="button"
-        className="btn btn-primary btn-lg p-2 m-0 mt-3"
-        onClick={() => {
-          myFetch(user);
-          actions.getContacts();
-          actions.getDeals();
-        }}
-      >
-        Next
-      </button>
+      <Link to="/HomePage">
+        <button
+          type="button"
+          className="btn btn-primary btn-lg p-2 m-0 mt-3"
+          onClick={() => {
+            myFetch(user);
+            actions.getContacts();
+            actions.getDeals();
+          }}
+        >
+          Next
+        </button>
+      </Link>
     </div>
   );
 };

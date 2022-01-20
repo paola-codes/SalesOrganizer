@@ -167,6 +167,17 @@ const getState = ({ getStore, getActions, setStore }) => {
           .then((data) => setStore({ listOfContact: data }))
           .catch((err) => console.error("Error:", err));
       },
+      /*Update Logged User Profile--------------------------------------------*/
+      updateUserProfile: (updatedProfile, id) => {
+        fetch(`${getStore().backEndUrl}/api/user/${id}`, {
+          method: "PUT",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(updatedProfile),
+        })
+          .then((response) => response.json())
+          .then((data) => setStore({ loggedUser: data }))
+          .catch((err) => console.error("Error:", err));
+      },
       /*Login/Logout Methods--------------------------------------------------*/
       /*Login*/
       updateUser: (loginInfo) => {

@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import { Context } from "../store/appContext";
@@ -8,11 +8,8 @@ export const DealDetails = () => {
 
   const { id } = useParams();
 
-  let deal = store.ListOfDeals.find((item, index) => {
-    if (item.id == id) {
-      return item;
-    }
-  });
+  let deal = store.ListOfDeals.filter((item) => item.id == id);
+  console.log("deal", deal);
 
   if (deal) {
     return (

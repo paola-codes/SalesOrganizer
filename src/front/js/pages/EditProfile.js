@@ -59,7 +59,7 @@ export const EditProfile = () => {
         <button
           className="btn btn-primary btn-lg p-2 w-75 m-auto my-3"
           onClick={() => {
-            actions.updateProfile(updatedProfile, store.loggedUser.id);
+            actions.updateUserProfile(updatedProfile, store.loggedUser.id);
           }}
         >
           Save Changes

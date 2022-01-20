@@ -6,10 +6,10 @@ export const ListOfContacts = () => {
   const { store, actions } = useContext(Context);
 
   return (
-    <div className="container text-center text-dark mt-3 p-4">
-      <h1 className="text-center my-5">Contacts List</h1>
+    <div className="container text-center text-dark mt-0 p-0">
+      <h1 className="text-center mb-3">Contacts List</h1>
       <ul
-        className="list-group position-relative mx-auto"
+        className="list-group position-relative mx-auto mt-2"
         style={{ width: "70%" }}
       >
         {store.listOfContacts.length > 0
@@ -50,12 +50,6 @@ export const ListOfContacts = () => {
             })
           : "Loading..."}
       </ul>
-      <Link to="/AddContact">
-        <button className="btn btn-primary btn-lg p-2 m-3">Add Contact</button>
-      </Link>
-      <Link to="/HomePage">
-        <button className="btn btn-primary btn-lg p-2 m-3">Home</button>
-      </Link>
     </div>
   );
 };

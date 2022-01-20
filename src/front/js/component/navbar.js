@@ -31,14 +31,17 @@ export const UserNavbar = () => {
             <Link to="/Profile" className="text-decoration-none text-dark me-2">
               <Nav.Item>Profile</Nav.Item>
             </Link>
-            <Link to="/AddDeal" className="text-decoration-none text-dark me-2">
-              <Nav.Item>Add Deal</Nav.Item>
-            </Link>
             <Link
-              to="/AddContact"
+              to="/ListOfDealsPage"
               className="text-decoration-none text-dark me-2"
             >
-              <Nav.Item>Add Contact</Nav.Item>
+              <Nav.Item>Deals</Nav.Item>
+            </Link>
+            <Link
+              to="/ListOfContactsPAge"
+              className="text-decoration-none text-dark me-2"
+            >
+              <Nav.Item>Contacts</Nav.Item>
             </Link>
             <Link to="/" className="text-decoration-none text-dark me-2">
               <Nav.Item>

@@ -56,6 +56,8 @@ export const AddContact = () => {
             className="btn btn-primary btn-lg p-2 m-3"
             onClick={() => {
               actions.addContact(newContact);
+              actions.getContacts();
+              actions.getDeals();
             }}
           >
             Add Contact

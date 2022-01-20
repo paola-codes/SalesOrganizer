@@ -11,11 +11,15 @@ import { AddContact } from "./pages/AddContact";
 import { EditContact } from "./pages/EditContact";
 import { ContactDetails } from "./pages/ContactDetails";
 import { ListOfContacts } from "./component/ListOfContacts";
+import { ListOfContactsPage } from "./pages/ListOfContactsPage";
+
 //Deals
 import { AddDeal } from "./pages/AddDeal";
 import { EditDeal } from "./pages/EditDeal";
 import { DealDetails } from "./pages/DealDetails";
 import { ListOfDeals } from "./component/ListOfDeals";
+import { ListOfDealsPage } from "./pages/ListOfDealsPage";
+
 //Profile
 import { Profile } from "./pages/Profile";
 import { EditProfile } from "./pages/EditProfile";
@@ -40,7 +44,6 @@ const Layout = () => {
     <div>
       <BrowserRouter basename={basename}>
         <ScrollToTop>
-          <UserNavbar />
           <Switch>
             <Route exact path="/">
               <Home />
@@ -55,39 +58,50 @@ const Layout = () => {
               <LoginRequired />
             </Route>
             <Route exact path="/HomePage">
+              <UserNavbar />
               <HomePage />
             </Route>
 
             <Route exact path="/AddContact">
+              <UserNavbar />
               <AddContact />
             </Route>
             <Route exact path="/EditContact/:id">
+              <UserNavbar />
               <EditContact />
             </Route>
             <Route exact path="/ContactDetails/:id">
+              <UserNavbar />
               <ContactDetails />
             </Route>
-            <Route exact path="/ListOfContacts">
-              <ListOfContacts />
+            <Route exact path="/ListOfContactsPage">
+              <UserNavbar />
+              <ListOfContactsPage />
             </Route>
 
             <Route exact path="/AddDeal">
+              <UserNavbar />
               <AddDeal />
             </Route>
             <Route exact path="/EditDeal/:id">
+              <UserNavbar />
               <EditDeal />
             </Route>
             <Route exact path="/DealDetails/:id">
+              <UserNavbar />
               <DealDetails />
             </Route>
-            <Route exact path="/ListOfDeals">
-              <ListOfDeals />
+            <Route exact path="/ListOfDealsPage">
+              <UserNavbar />
+              <ListOfDealsPage />
             </Route>
 
             <Route exact path="/Profile">
+              <UserNavbar />
               <Profile />
             </Route>
             <Route exact path="/EditProfile">
+              <UserNavbar />
               <EditProfile />
             </Route>
 

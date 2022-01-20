@@ -153,6 +153,8 @@ export const AddDeal = () => {
             className="btn btn-primary btn-lg p-2 m-3"
             onClick={() => {
               actions.addDeal(newDeal);
+              actions.getContacts();
+              actions.getDeals();
             }}
           >
             Add Deal
