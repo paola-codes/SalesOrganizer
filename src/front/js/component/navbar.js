@@ -4,23 +4,23 @@ import { Link } from "react-router-dom";
 import salesOrg from "../../img/salesOrg.png";
 import { Context } from "../store/appContext";
 
-export const navbar = () => {
+export const UserNavbar = () => {
   const { actions } = useContext(Context);
 
   return (
-    <Navbar variant="ligt" bg="light" expand="lg">
+    <Navbar bg="light" expand="lg">
       <Container fluid>
         <Navbar.Brand>
           <img
             alt=""
             src={salesOrg}
-            width="50"
-            className="d-inline-flex align-center p-0 m-0 text-dark"
+            width="30"
+            className="d-inline-flex align-top p-0 me-1 m-0 text-dark"
           />
-          <h3 className="d-inline-flex m-0">SalesOrganizer</h3>
+          <h3 className="d-inline-flex align-center p-0 m-0">SalesOrganizer</h3>
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
-        <Navbar.Collapse id="basic-navbar-nav">
+        <Navbar.Collapse id="basic-navbar-nav text-dark">
           <Nav className="ms-auto">
             <Link
               to="/HomePage"
