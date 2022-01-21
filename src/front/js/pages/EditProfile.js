@@ -16,7 +16,9 @@ export const EditProfile = () => {
 
   return (
     <div className="container py-4 px-3 text-center text-dark fs-4 my-3">
-      <h1 className="text-center mb-2">Edit Profile Information</h1>
+      <h1 className="text-center mb-2">
+        <strong>Edit Profile Information</strong>
+      </h1>
 
       <form className="text-start my-3">
         <div className="form-group my-3">

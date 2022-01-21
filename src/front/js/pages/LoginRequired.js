@@ -8,7 +8,9 @@ export const LoginRequired = () => {
   return (
     <div className="container py-4 px-3 text-center text-dark fs-4 mt-3">
       <h1 className="mt-2 mb-1">
-        Please Login or Sign Up to access SalesOrganizer Services
+        <strong>
+          Please Login or Sign Up to access SalesOrganizer Services
+        </strong>
       </h1>
 
       <div className="my-4">

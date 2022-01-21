@@ -8,7 +8,9 @@ export const Home = () => {
 
   return (
     <div className="container p-4 text-center text-dark fs-6 m-auto mt-3">
-      <h1>Welcome to SalesOrganizer</h1>
+      <h1 className="my-3">
+        <strong>Welcome to SalesOrganizer</strong>
+      </h1>
 
       <h2 className="my-3">
         The app that helps you get your contacts and deals organized!

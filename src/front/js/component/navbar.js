@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { Navbar, Nav, Container } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import salesOrg from "../../img/salesOrg.png";
+import Files from "../../img/files.png";
 import { Context } from "../store/appContext";
 
 export const UserNavbar = () => {
@@ -13,11 +13,13 @@ export const UserNavbar = () => {
         <Navbar.Brand>
           <img
             alt=""
-            src={salesOrg}
+            src={Files}
             width="30"
-            className="d-inline-flex align-top p-0 me-1 m-0 text-dark"
+            className="d-inline-flex align-top p-0 me-1 mt-1 m-0 text-dark"
           />
-          <h3 className="d-inline-flex align-center p-0 m-0">SalesOrganizer</h3>
+          <h3 className="d-inline-flex align-center p-0 m-0">
+            <strong>SalesOrganizer</strong>
+          </h3>
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav text-dark">

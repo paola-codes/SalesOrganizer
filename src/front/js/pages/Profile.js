@@ -7,7 +7,9 @@ export const Profile = () => {
 
   return (
     <div className="container py-4 px-3 text-center text-dark fs-4 mt-3">
-      <h1 className="text-center mt-2 mb-3">Profile</h1>
+      <h1 className="text-center mt-0 mb-3">
+        <strong>Profile</strong>
+      </h1>
 
       <div className="row d-flex justify-content-center mb-3">
         <div className="col-9 mx-4 text-start bg-dark text-light bg-opacity-75 shadow-lg p-3">

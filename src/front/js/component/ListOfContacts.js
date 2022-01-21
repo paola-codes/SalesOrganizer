@@ -39,7 +39,7 @@ export const ListOfContacts = () => {
                     </Link>
                     <button
                       type="button"
-                      className="btn btn-danger mx-2 mb-0 px-1"
+                      className="btn btn-danger m-2 fs-5"
                       onClick={() => actions.deleteContact(contact.id)}
                     >
                       Delete

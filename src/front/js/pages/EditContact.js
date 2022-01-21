@@ -21,7 +21,9 @@ export const EditContact = () => {
 
   return (
     <div className="container py-4 px-3 text-center text-dark fs-4 my-3">
-      <h1 className="text-center mb-2">Edit Contact Information</h1>
+      <h1 className="text-center mb-2">
+        <strong>Edit Contact Information</strong>
+      </h1>
 
       <form className="text-start my-3">
         <div className="form-group my-1">
@@ -58,21 +60,23 @@ export const EditContact = () => {
           />
         </div>
       </form>
-      <div className="row d-flex justify-content-start p-0 m-0">
-        <Link to="/HomePage">
-          <button
-            className="btn btn-primary me-3 mb-3 m-0 fs-5"
-            onClick={() => {
-              actions.updateContactDetails(updatedContact, id);
-            }}
-          >
-            Save Changes
-          </button>
-        </Link>
+      <div className="row d-inline-flex justify-content-start p-0 m-0">
+        <div className="col p-0 m-0">
+          <Link to="/HomePage">
+            <button
+              className="btn btn-dark me-3 mb-3 m-0 fs-5"
+              onClick={() => {
+                actions.updateContactDetails(updatedContact, id);
+              }}
+            >
+              Save Changes
+            </button>
+          </Link>
 
-        <Link to="/HomePage">
-          <button className="btn btn-secondary me-3 m-0 fs-5">Home</button>
-        </Link>
+          <Link to="/HomePage">
+            <button className="btn btn-primary me-3 mb-3 m-0 fs-5">Home</button>
+          </Link>
+        </div>
       </div>
     </div>
   );
