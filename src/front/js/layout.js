@@ -10,14 +10,12 @@ import { UserNavbar } from "./component/navbar";
 import { AddContact } from "./pages/AddContact";
 import { EditContact } from "./pages/EditContact";
 import { ContactDetails } from "./pages/ContactDetails";
-import { ListOfContacts } from "./component/ListOfContacts";
 import { ListOfContactsPage } from "./pages/ListOfContactsPage";
 
 //Deals
 import { AddDeal } from "./pages/AddDeal";
 import { EditDeal } from "./pages/EditDeal";
 import { DealDetails } from "./pages/DealDetails";
-import { ListOfDeals } from "./component/ListOfDeals";
 import { ListOfDealsPage } from "./pages/ListOfDealsPage";
 
 //Profile

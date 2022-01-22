@@ -10,6 +10,7 @@ export const ListOfContacts = () => {
   }, []);
 
   const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
 
   return (
     <div style={{ width: "85%" }} className="text-center text-dark m-auto p-0">
