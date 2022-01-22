@@ -12,20 +12,18 @@ export const ListOfContactsPage = () => {
 
   return (
     <div className="container py-4 px-3 text-center text-dark fs-4 mt-0">
-      <h1 className="text-center mt-2 mb-1">
-        <strong>List Of Contacts</strong>
-      </h1>
-      <div className="row mt-4 d-flex justify-content-center">
-        <div className="col-10 d-inline-flex justify-content-center">
+      <div className="row d-flex justify-content-center">
+        <h1 className="mb-3">
+          <strong>Contacts List</strong>
+        </h1>
+        <div className="col-10 d-inline-flex justify-content-start p-0">
           <Link to="/AddContact">
-            <button className="btn btn-primary fs-4 p-2 mt-2 mb-4 mx-2">
+            <button className="btn btn-primary fs-5 p-2 mt-2 mb-4 me-2">
               Add Contact
             </button>
           </Link>
           <Link to="/HomePage">
-            <button className="btn btn-primary fs-4 p-2 mt-2 mb-4 mx-2">
-              Home
-            </button>
+            <button className="btn btn-dark fs-5 p-2 mt-2 mb-4">Home</button>
           </Link>
         </div>
 

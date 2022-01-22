@@ -1,13 +1,18 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Context } from "../store/appContext";
 
 export const ListOfContacts = () => {
   const { store, actions } = useContext(Context);
 
+  useEffect(() => {
+    actions.getContacts();
+  }, []);
+
+  const [name, setName] = useState("");
+
   return (
     <div className="container text-center text-dark mt-0 p-0">
-      <h1 className="text-center mb-3">Contacts List</h1>
       <ul
         className="list-group position-relative mx-auto mt-2"
         style={{ width: "80%" }}
@@ -30,16 +35,18 @@ export const ListOfContacts = () => {
                   </p>
                   <p className="text-center m-1 mt-3">
                     <Link to={`/ContactDetails/${contact.id}`}>
-                      <button className="btn btn-primary m-2 fs-5">
+                      <button className="btn btn-primary my-2 me-2 fs-5">
                         Details
                       </button>
                     </Link>
                     <Link to={`/EditContact/${contact.id}`}>
-                      <button className="btn btn-dark m-2 fs-5">Edit</button>
+                      <button className="btn btn-dark my-2 me-2 fs-5">
+                        Edit
+                      </button>
                     </Link>
                     <button
                       type="button"
-                      className="btn btn-danger m-2 fs-5"
+                      className="btn btn-danger my-2 fs-5"
                       onClick={() => actions.deleteContact(contact.id)}
                     >
                       Delete

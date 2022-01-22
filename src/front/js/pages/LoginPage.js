@@ -7,8 +7,8 @@ export const LoginPage = (props) => {
   const { actions, store } = useContext(Context);
 
   const [user, setUser] = useState({
-    email: null,
-    password: null,
+    email: "",
+    password: "",
   });
 
   const handleChange = (e) =>

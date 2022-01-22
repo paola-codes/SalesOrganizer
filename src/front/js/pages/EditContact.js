@@ -67,6 +67,7 @@ export const EditContact = () => {
               className="btn btn-dark me-3 mb-3 m-0 fs-5"
               onClick={() => {
                 actions.updateContactDetails(updatedContact, id);
+                actions.getContacts();
               }}
             >
               Save Changes

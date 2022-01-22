@@ -12,20 +12,18 @@ export const ListOfDealsPage = () => {
 
   return (
     <div className="container py-4 px-3 text-center text-dark fs-4 mt-0">
-      <h1 className="text-center mt-2 mb-1">
-        <strong>List Of Deals</strong>
-      </h1>
-      <div className="row mt-4 d-flex justify-content-center">
-        <div className="col-10 d-inline-flex justify-content-center">
+      <div className="row d-flex justify-content-center">
+        <h1 className="mb-3">
+          <strong>Deals List</strong>
+        </h1>
+        <div className="col-10 d-inline-flex justify-content-start p-0">
           <Link to="/AddDeal">
-            <button className="btn btn-primary fs-4 p-2 mt-2 mb-4 mx-2">
+            <button className="btn btn-primary fs-5 p-2 mt-2 mb-4 me-2">
               Add Deal
             </button>
           </Link>
           <Link to="/HomePage">
-            <button className="btn btn-primary fs-4 p-2 mt-2 mb-4 mx-2">
-              Home
-            </button>
+            <button className="btn btn-dark fs-5 p-2 mt-2 mb-4">Home</button>
           </Link>
         </div>
 

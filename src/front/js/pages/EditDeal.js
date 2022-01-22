@@ -78,8 +78,9 @@ export const EditDeal = () => {
               className="form-select m-0"
               name="client_name"
               onChange={handleChange}
-              value={updatedDeal.client_name}
+              defaultValue={"DEFAULT"}
             >
+              <option value="DEFAULT">{updatedDeal.client_name}</option>
               {store.listOfContacts.length > 0
                 ? store.listOfContacts.map((contact, index) => {
                     return <option key={index}>{contact.full_name}</option>;
@@ -162,6 +163,7 @@ export const EditDeal = () => {
               className="btn btn-dark me-3 mb-3 m-0 fs-5"
               onClick={() => {
                 actions.updateDealDetails(updatedDeal, id);
+                actions.getDeals();
               }}
             >
               Save Changes

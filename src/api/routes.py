@@ -185,7 +185,7 @@ def update_deal_details(id):
 
     deals_query = Deal.query.get(id)
 
-    if deals_query.status == body["status"]:
+    if deals_query.deal_title == body["deal_title"]:
         return jsonify(deals_query.serialize()), 200
     raise APIException("Update Failed")
 

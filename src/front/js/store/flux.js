@@ -71,7 +71,7 @@ const getState = ({ getStore, getActions, setStore }) => {
       },
       /*Update Deal Details*/
       updateDealDetails: (updatedDeal, deal_id) => {
-        fetch(`${getStore().backEndUrl}/api/user/deal/${deal_id}`, {
+        fetch(`${getStore().backEndUrl}/api/deal/details/${deal_id}`, {
           method: "PUT",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(updatedDeal),
