@@ -1,8 +1,6 @@
 import React, { useState, useContext, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Context } from "../store/appContext";
-import { ListOfDeals } from "../component/ListOfDeals";
-import { ListOfContacts } from "../component/ListOfContacts";
 
 export const HomePage = () => {
   const { store, actions } = useContext(Context);
@@ -87,6 +85,9 @@ export const HomePage = () => {
             >
               Deals List
             </button>
+          </Link>
+          <Link to="/Profile">
+            <button className="btn btn-info fs-4 p-2 w-75 my-2">Profile</button>
           </Link>
         </div>
       </div>
