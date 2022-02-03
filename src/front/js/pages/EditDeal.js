@@ -83,8 +83,8 @@ export const EditDeal = () => {
               <option value="DEFAULT">{updatedDeal.client_name}</option>
               {store.listOfContacts.length > 0
                 ? store.listOfContacts.map((contact, index) => {
-                    return <option key={index}>{contact.full_name}</option>;
-                  })
+                  return <option key={index}>{contact.full_name}</option>;
+                })
                 : "Loading..."}
             </select>
           </label>
@@ -102,14 +102,20 @@ export const EditDeal = () => {
         </div>
         <div className="form-group my-2">
           <label>Status</label>
-          <input
-            type="text"
-            className="form-control"
-            placeholder="Edit Status"
-            name="status"
-            onChange={handleChange}
-            value={updatedDeal.status}
-          />
+          <label className="list-group-item d-flex align-items-start p-0 m-0">
+            <select
+              id="inputState"
+              className="form-select m-0"
+              name="client_name"
+              onChange={handleChange}
+              defaultValue={"DEFAULT"}
+            >
+              <option value="DEFAULT">{updatedDeal.status}</option>
+              <option value="Pending">Pending</option>
+              <option value="Won">Won</option>
+              <option value="Lost">Lost</option>
+            </select>
+          </label>
         </div>
         <div className="form-group my-2">
           <label>Loss Reasons</label>

@@ -88,28 +88,6 @@ def update_user_profile(id):
 
 #Deal Methods ------------------------------------------------------------
 
-#Get All Deals By Contact
-@api.route('/deal/contact_id/<contact_id>', methods=['GET'])
-def get_deals_by_contact(contact_id):
-
-    deals_query = Deal.query.filter_by(contact_id=contact_id)
-    deals_by_contact = list(map(lambda x: x.serialize(), deals_query))
-
-    return jsonify(
-        deals_by_contact
-    ), 200
-
-#Get All Deals By Deal Owner
-@api.route('/deal/deal_owner/<deal_owner>', methods=['GET'])
-def get_deals_by_deal_owner(deal_owner):
-
-    deals_query = Deal.query.filter_by(deal_owner=deal_owner)
-    deals_by_deal_owner = list(map(lambda x: x.serialize(), deals_query))
-
-    return jsonify(
-        deals_by_deal_owner
-    ), 200
-
 #Get All Deals
 @api.route('/deal', methods=['GET'])
 def get_all_deals():
@@ -145,7 +123,7 @@ def add_new_deal():
         deal_value=body["deal_value"], 
         client_name=body["client_name"], 
         expected_product=body["expected_product"], 
-        status="In Progress",
+        status="Pending",
         loss_reasons="",
         win_reasons="",
         notes=body["notes"],
@@ -224,27 +202,23 @@ def lost_deal(id):
         return jsonify(deals_query.serialize()), 200
     raise APIException("Update Failed")
 
-#Get Won Deals
-@api.route('/deal/won', methods=['GET'])
-def get_won_deals():
+#Update Deal as Pending
+@api.route('/deal/pending/<id>', methods=['PUT'])
+def pending_deal(id):
     
-    deals_query = Deal.query.filter_by(status="Won")
-    won_deals = list(map(lambda x: x.serialize(), deals_query))
+    my_deal = Deal.query.get(id)
 
-    return jsonify(
-        won_deals
-    ), 200
+    body = request.get_json()
 
-#Get Lost Deals
-@api.route('/deal/lost', methods=['GET'])
-def get_lost_deals():
-    
-    deals_query = Deal.query.filter_by(status="Lost")
-    lost_deals = list(map(lambda x: x.serialize(), deals_query))
+    my_deal.status = body["status"]
 
-    return jsonify(
-        lost_deals
-    ), 200
+    db.session.commit()
+
+    deals_query = Deal.query.get(id)
+
+    if deals_query.status == body["status"]:
+        return jsonify(deals_query.serialize()), 200
+    raise APIException("Update Failed")
 
 #Delete Deal
 @api.route('/deal/<id>', methods=['DELETE'])
@@ -283,28 +257,6 @@ def get_contact_by_id(id):
 
     return jsonify(
         contact_by_id
-    ), 200
-
-#Get Contact by Email
-@api.route('/contact/email/<email>', methods=['GET'])
-def get_contact_by_email(email):
-    
-    contacts_query = Contact.query.filter_by(email=email)
-    contact_by_email = list(map(lambda x: x.serialize(), contact_by_id))
-
-    return jsonify(
-        contact_by_email
-    ), 200
-
-#Get Contact by Name
-@api.route('/contact/name/<full_name>', methods=['GET'])
-def get_contact_by_name(full_name):
-    
-    contacts_query = Contact.query.filter_by(full_name=full_name)
-    contact_by_name = list(map(lambda x: x.serialize(), contact_by_name))
-
-    return jsonify(
-        contact_by_name
     ), 200
 
 #Post New Contact

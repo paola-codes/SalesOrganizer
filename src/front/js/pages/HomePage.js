@@ -10,20 +10,20 @@ export const HomePage = () => {
     actions.getContacts();
   }, []);
 
-  const OpenDealsFilter = (deal) => {
-    return deal["status"] !== "lost" && deal["status"] !== "won";
+  const PendingDealsFilter = (deal) => {
+    return deal["status"] == "Pending";
   };
 
-  const OpenDeals = Object.values(store.listOfDeals).filter(OpenDealsFilter);
+  const PendingDeals = Object.values(store.listOfDeals).filter(PendingDealsFilter);
 
   const WonDealsFilter = (deal) => {
-    return deal["status"] == "won";
+    return deal["status"] == "Won";
   };
 
   const WonDeals = Object.values(store.listOfDeals).filter(WonDealsFilter);
 
   const LostDealsFilter = (deal) => {
-    return deal["status"] == "lost";
+    return deal["status"] == "Lost";
   };
 
   const LostDeals = Object.values(store.listOfDeals).filter(LostDealsFilter);
@@ -44,8 +44,8 @@ export const HomePage = () => {
             </thead>
             <tbody>
               <tr className="">
-                <th scope="row">{OpenDeals.length}</th>
-                <td>Open Deals</td>
+                <th scope="row">{PendingDeals.length}</th>
+                <td>Pending Deals</td>
               </tr>
               <tr className="">
                 <th scope="row">{WonDeals.length}</th>

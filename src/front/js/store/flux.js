@@ -4,15 +4,9 @@ const getState = ({ getStore, getActions, setStore }) => {
       backEndUrl: process.env.BACKEND_URL,
       loggedUser: {},
       listOfContacts: [],
-      contactDetails: [],
-      contactByName: [],
-      contactByEmail: [],
       listOfDeals: [],
-      wonDeals: [],
-      lostDeals: [],
+      contactDetails: [],
       dealDetails: [],
-      dealsbyContact: [],
-      dealsbyDealOwner: [],
     },
     actions: {
       /*Deal Methods--------------------------------------------------*/
@@ -21,34 +15,6 @@ const getState = ({ getStore, getActions, setStore }) => {
         fetch(`${getStore().backEndUrl}/api/deal`)
           .then((response) => response.json())
           .then((data) => setStore({ listOfDeals: data }))
-          .catch((err) => console.error("Error:", err));
-      },
-      /*Get All Won Deals*/
-      getWonDeals: () => {
-        fetch(`${getStore().backEndUrl}/api/deal/won`)
-          .then((response) => response.json())
-          .then((data) => setStore({ wonDeals: data }))
-          .catch((err) => console.error("Error:", err));
-      },
-      /*Get All Lost Deals*/
-      getLostDeals: () => {
-        fetch(`${getStore().backEndUrl}/api/deal/lost`)
-          .then((response) => response.json())
-          .then((data) => setStore({ lostDeals: data }))
-          .catch((err) => console.error("Error:", err));
-      },
-      /*Get Deals by Contact*/
-      getDealsbyContact: (contact_id) => {
-        fetch(`${getStore().backEndUrl}/api/deal/contact_id/${contact_id}`)
-          .then((response) => response.json())
-          .then((data) => setStore({ dealsbyContact: data }))
-          .catch((err) => console.error("Error:", err));
-      },
-      /*Get Deals by Deal Owner*/
-      getDealsbyDealOwner: (deal_owner) => {
-        fetch(`${getStore().backEndUrl}/api/deal/deal_owner/${deal_owner}`)
-          .then((response) => response.json())
-          .then((data) => setStore({ dealsbyDealOwner: data }))
           .catch((err) => console.error("Error:", err));
       },
       /*Get Deal by ID*/
@@ -99,6 +65,16 @@ const getState = ({ getStore, getActions, setStore }) => {
           .then((response) => response.json())
           .catch((err) => console.error("Error:", err));
       },
+      /*Update Deal as Pending*/
+      pendingDeal: (pendingStatus, deal_id) => {
+        fetch(`${getStore().backEndUrl}/api/deal/pending/${deal_id}`, {
+          method: "PUT",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(pendingStatus),
+        })
+          .then((response) => response.json())
+          .catch((err) => console.error("Error:", err));
+      },
       /*Delete Deal*/
       deleteDeal: (id) => {
         fetch(`${getStore().backEndUrl}/api/deal/${id}`, {
@@ -108,26 +84,13 @@ const getState = ({ getStore, getActions, setStore }) => {
           .then((data) => setStore({ listOfDeals: data }))
           .catch((err) => console.error("Error:", err));
       },
+
       /*Contact Methods--------------------------------------------------*/
       /*Get All Contacts*/
       getContacts: () => {
         fetch(`${getStore().backEndUrl}/api/contact`)
           .then((response) => response.json())
           .then((data) => setStore({ listOfContacts: data }))
-          .catch((err) => console.error("Error:", err));
-      },
-      /*Get Contact by Name*/
-      getContactByName: (full_name) => {
-        fetch(`${getStore().backEndUrl}/api/contact/name/${full_name}`)
-          .then((response) => response.json())
-          .then((data) => setStore({ contactByName: data }))
-          .catch((err) => console.error("Error:", err));
-      },
-      /*Get Contact by Email*/
-      getContactByEmail: (email) => {
-        fetch(`${getStore().backEndUrl}/api/contact/email/${email}`)
-          .then((response) => response.json())
-          .then((data) => setStore({ contactByEmail: data }))
           .catch((err) => console.error("Error:", err));
       },
       /*Get Contact by ID*/
@@ -167,6 +130,7 @@ const getState = ({ getStore, getActions, setStore }) => {
           .then((data) => setStore({ listOfContacts: data }))
           .catch((err) => console.error("Error:", err));
       },
+
       /*Update Logged User Profile--------------------------------------------*/
       updateUserProfile: (updatedProfile, id) => {
         fetch(`${getStore().backEndUrl}/api/user/${id}`, {
@@ -178,6 +142,7 @@ const getState = ({ getStore, getActions, setStore }) => {
           .then((data) => setStore({ loggedUser: data }))
           .catch((err) => console.error("Error:", err));
       },
+
       /*Login/Logout Methods--------------------------------------------------*/
       /*Login*/
       updateUser: (loginInfo) => {
