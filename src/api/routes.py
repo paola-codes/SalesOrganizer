@@ -145,12 +145,11 @@ def add_new_deal():
         deal_value=body["deal_value"], 
         client_name=body["client_name"], 
         expected_product=body["expected_product"], 
-        status=body["status"],
+        status="In Progress",
         loss_reasons="",
         win_reasons="",
         notes=body["notes"],
         estimated_close_date=body["estimated_close_date"],
-        contact_id=body["contact_id"],
         user_id=body["user_id"]
     )
 
@@ -229,7 +228,7 @@ def lost_deal(id):
 @api.route('/deal/won', methods=['GET'])
 def get_won_deals():
     
-    deals_query = Deal.query.filter_by(status="won")
+    deals_query = Deal.query.filter_by(status="Won")
     won_deals = list(map(lambda x: x.serialize(), deals_query))
 
     return jsonify(
@@ -240,7 +239,7 @@ def get_won_deals():
 @api.route('/deal/lost', methods=['GET'])
 def get_lost_deals():
     
-    deals_query = Deal.query.filter_by(status="lost")
+    deals_query = Deal.query.filter_by(status="Lost")
     lost_deals = list(map(lambda x: x.serialize(), deals_query))
 
     return jsonify(

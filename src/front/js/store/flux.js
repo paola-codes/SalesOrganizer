@@ -145,7 +145,7 @@ const getState = ({ getStore, getActions, setStore }) => {
           body: JSON.stringify(newContact),
         })
           .then((response) => response.json())
-          .then((data) => setStore({ listOfContact: data }))
+          .then((data) => setStore({ listOfContacts: data }))
           .catch((err) => console.error("Error:", err));
       },
       /*Update Contact Details*/
@@ -164,7 +164,7 @@ const getState = ({ getStore, getActions, setStore }) => {
           method: "DELETE",
         })
           .then((response) => response.json())
-          .then((data) => setStore({ listOfContact: data }))
+          .then((data) => setStore({ listOfContacts: data }))
           .catch((err) => console.error("Error:", err));
       },
       /*Update Logged User Profile--------------------------------------------*/

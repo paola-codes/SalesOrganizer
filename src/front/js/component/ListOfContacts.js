@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { Context } from "../store/appContext";
+import queryString from "query-string";
 
 export const ListOfContacts = () => {
   const { store, actions } = useContext(Context);

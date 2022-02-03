@@ -13,12 +13,10 @@ export const AddDeal = () => {
     deal_value: "",
     client_name: "",
     expected_product: "",
-    status: "started",
-    loss_reasons: "",
-    win_reasons: "",
     notes: "",
     estimated_close_date: "",
     contact_id: "",
+    user_id: store.loggedUser.id,
   });
 
   const handleChange = (e) =>
@@ -101,36 +99,6 @@ export const AddDeal = () => {
             />
           </div>
           <div className="form-group my-2">
-            <label>Status</label>
-            <input
-              type="text"
-              className="form-control"
-              placeholder="Ex. In Progress, Won, or Lost"
-              name="status"
-              onChange={handleChange}
-            />
-          </div>
-          <div className="form-group my-2">
-            <label>Loss Reasons</label>
-            <input
-              type="text"
-              className="form-control"
-              placeholder="Ex. Client needed more units that were available"
-              name="loss_reasons"
-              onChange={handleChange}
-            />
-          </div>
-          <div className="form-group my-2">
-            <label>Win Reasons</label>
-            <input
-              type="text"
-              className="form-control"
-              placeholder="Ex. Client liked the express delviery option plus the 30-day money back guarantee"
-              name="win_reasons"
-              onChange={handleChange}
-            />
-          </div>
-          <div className="form-group my-2">
             <label>Notes</label>
             <input
               type="text"
@@ -156,7 +124,6 @@ export const AddDeal = () => {
             className="btn btn-primary btn-lg p-2 m-3"
             onClick={() => {
               actions.addDeal(newDeal);
-              actions.getContacts();
               actions.getDeals();
             }}
           >
@@ -164,7 +131,7 @@ export const AddDeal = () => {
           </button>
         </Link>
         <Link to="/HomePage">
-          <button className="btn btn-primary btn-lg p-2 m-3">Home</button>
+          <button className="btn btn-dark btn-lg p-2 m-3">Home</button>
         </Link>
       </div>
     </div>

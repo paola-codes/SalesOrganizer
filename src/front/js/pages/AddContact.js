@@ -10,6 +10,7 @@ export const AddContact = () => {
     full_name: "",
     email: "",
     phone: "",
+    user_id: store.loggedUser.id
   });
 
   const handleChange = (e) =>
@@ -59,7 +60,6 @@ export const AddContact = () => {
             onClick={() => {
               actions.addContact(newContact);
               actions.getContacts();
-              actions.getDeals();
             }}
           >
             Add Contact

@@ -16,8 +16,8 @@ export const ListOfDeals = () => {
     searchFunction(qs.keyword);
   }, [store.listOfDeals]);
 
-  let wonStatus = { status: "won" };
-  let lostStatus = { status: "lost" };
+  let wonStatus = { status: "Won" };
+  let lostStatus = { status: "Lost" };
 
   const [deals, setDeals] = useState(store.listOfDeals);
 
@@ -32,6 +32,10 @@ export const ListOfDeals = () => {
         return item;
       } else if (
         item.description.toLowerCase().includes(keyword.toLowerCase())
+      ) {
+        return item;
+      } else if (
+        item.client_name.toLowerCase().includes(keyword.toLowerCase())
       ) {
         return item;
       }
@@ -81,7 +85,18 @@ export const ListOfDeals = () => {
                     <strong>Client Name:</strong> {deal.client_name}
                   </p>
                   <p className="mx-2 m-1 text-start">
-                    <strong>Status:</strong> {deal.status}
+                    <strong>Status:</strong>{" "}
+                    <span
+                      className={
+                        deal.status == "Lost"
+                          ? "text-danger"
+                          : deal.status == "Won"
+                          ? "text-success"
+                          : "text-dark"
+                      }
+                    >
+                      {deal.status}
+                    </span>
                   </p>
                   <p className="text-center m-1 mt-3">
                     <Link to={`/DealDetails/${deal.id}`}>
@@ -104,20 +119,24 @@ export const ListOfDeals = () => {
                     >
                       Delete
                     </button>
-                    <button
-                      type="button"
-                      className="btn btn-success my-2 me-2 fs-5"
-                      onClick={() => actions.wonDeal(wonStatus, deal.id)}
-                    >
-                      Won
-                    </button>
-                    <button
-                      type="button"
-                      className="btn btn-danger my-2 fs-5"
-                      onClick={() => actions.lostDeal(lostStatus, deal.id)}
-                    >
-                      Lost
-                    </button>
+                    <Link to="/HomePage">
+                      <button
+                        type="button"
+                        className="btn btn-success my-2 me-2 fs-5"
+                        onClick={() => actions.wonDeal(wonStatus, deal.id)}
+                      >
+                        Won
+                      </button>
+                    </Link>
+                    <Link to="/HomePage">
+                      <button
+                        type="button"
+                        className="btn btn-danger my-2 fs-5"
+                        onClick={() => actions.lostDeal(lostStatus, deal.id)}
+                      >
+                        Lost
+                      </button>
+                    </Link>
                   </p>
                 </li>
               );
