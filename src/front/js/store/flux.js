@@ -5,8 +5,6 @@ const getState = ({ getStore, getActions, setStore }) => {
       loggedUser: {},
       listOfContacts: [],
       listOfDeals: [],
-      contactDetails: [],
-      dealDetails: [],
     },
     actions: {
       /*Deal Methods--------------------------------------------------*/

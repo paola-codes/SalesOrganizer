@@ -63,7 +63,7 @@ export const ListOfDeals = () => {
             type="text"
             className="form-control"
             placeholder="Filter by Title"
-            aria-label="Recipient's username"
+            aria-label="Deals Filter"
             aria-describedby="button-addon2"
             onChange={(e) => searchHash(e)}
           />

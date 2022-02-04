@@ -51,50 +51,50 @@ export const ListOfContacts = () => {
             type="text"
             className="form-control"
             placeholder="Filter by Name"
-            aria-label="Recipient's username"
+            aria-label="Contacts Filter"
             aria-describedby="button-addon2"
             onChange={(e) => searchHash(e)}
           />
         </div>
         {store.listOfContacts.length > 0
           ? contacts.map((contact, index) => {
-              return (
-                <li
-                  className="list-group-item d-flex flex-column mb-3 border shadow-lg border-primary border-4 rounded-3 mx-auto"
-                  key={index}
-                  style={{ width: "100%" }}
-                >
-                  <p className="mx-2 m-1 text-start">
-                    <strong>Full Name:</strong> {contact.full_name}
-                  </p>
-                  <p className="mx-2 m-1 text-start">
-                    <strong>Email:</strong> {contact.email}
-                  </p>
-                  <p className="mx-2 m-1 text-start">
-                    <strong>Phone:</strong> {contact.phone}
-                  </p>
-                  <p className="text-center m-1 mt-3">
-                    <Link to={`/ContactDetails/${contact.id}`}>
-                      <button className="btn btn-primary my-2 me-2 fs-5">
-                        Details
-                      </button>
-                    </Link>
-                    <Link to={`/EditContact/${contact.id}`}>
-                      <button className="btn btn-dark my-2 me-2 fs-5">
-                        Edit
-                      </button>
-                    </Link>
-                    <button
-                      type="button"
-                      className="btn btn-danger my-2 fs-5"
-                      onClick={() => actions.deleteContact(contact.id)}
-                    >
-                      Delete
+            return (
+              <li
+                className="list-group-item d-flex flex-column mb-3 border shadow-lg border-primary border-4 rounded-3 mx-auto"
+                key={index}
+                style={{ width: "100%" }}
+              >
+                <p className="mx-2 m-1 text-start">
+                  <strong>Full Name:</strong> {contact.full_name}
+                </p>
+                <p className="mx-2 m-1 text-start">
+                  <strong>Email:</strong> {contact.email}
+                </p>
+                <p className="mx-2 m-1 text-start">
+                  <strong>Phone:</strong> {contact.phone}
+                </p>
+                <p className="text-center m-1 mt-3">
+                  <Link to={`/ContactDetails/${contact.id}`}>
+                    <button className="btn btn-primary my-2 me-2 fs-5">
+                      Details
                     </button>
-                  </p>
-                </li>
-              );
-            })
+                  </Link>
+                  <Link to={`/EditContact/${contact.id}`}>
+                    <button className="btn btn-dark my-2 me-2 fs-5">
+                      Edit
+                    </button>
+                  </Link>
+                  <button
+                    type="button"
+                    className="btn btn-danger my-2 fs-5"
+                    onClick={() => actions.deleteContact(contact.id)}
+                  >
+                    Delete
+                  </button>
+                </p>
+              </li>
+            );
+          })
           : "Loading..."}
       </ul>
     </div>
