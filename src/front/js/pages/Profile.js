@@ -37,8 +37,8 @@ export const Profile = () => {
           </button>
         </Link>
         <Link to="/HomePage">
-          <button className="btn btn-primary btn-lg p-2 w-75 m-auto my-3">
-            Back to Home
+          <button className="btn btn-dark btn-lg p-2 w-75 m-auto my-3">
+            Home
           </button>
         </Link>
       </div>

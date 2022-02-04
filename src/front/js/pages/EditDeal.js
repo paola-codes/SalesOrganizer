@@ -166,7 +166,7 @@ export const EditDeal = () => {
         <div className="col p-0 m-0">
           <Link to="/HomePage">
             <button
-              className="btn btn-dark me-3 mb-3 m-0 fs-5"
+              className="btn btn-primary me-3 mb-3 m-0 fs-5"
               onClick={() => {
                 actions.updateDealDetails(updatedDeal, id);
                 actions.getDeals();
@@ -177,7 +177,7 @@ export const EditDeal = () => {
           </Link>
 
           <Link to="/HomePage">
-            <button className="btn btn-primary me-3 mb-3 m-0 fs-5">Home</button>
+            <button className="btn btn-dark me-3 mb-3 m-0 fs-5">Home</button>
           </Link>
         </div>
       </div>

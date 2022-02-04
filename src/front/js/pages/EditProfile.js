@@ -68,7 +68,7 @@ export const EditProfile = () => {
         </Link>
 
         <Link to="/HomePage">
-          <button className="btn btn-secondary me-3 m-0 fs-5">Home</button>
+          <button className="btn btn-dark me-3 m-0 fs-5">Home</button>
         </Link>
       </div>
     </div>

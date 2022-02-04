@@ -66,7 +66,7 @@ export const AddContact = () => {
           </button>
         </Link>
         <Link to="/HomePage">
-          <button className="btn btn-primary btn-lg p-2 m-3">Home</button>
+          <button className="btn btn-dark btn-lg p-2 m-3">Home</button>
         </Link>
       </div>
     </div>
