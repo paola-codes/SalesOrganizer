@@ -17,13 +17,6 @@ const getState = ({ getStore, getActions, setStore }) => {
           .then((data) => setStore({ listOfDeals: data }))
           .catch((err) => console.error("Error:", err));
       },
-      /*Get Deal by ID*/
-      getDealByID: (deal_id) => {
-        fetch(`${getStore().backEndUrl}/api/deal/${deal_id}`)
-          .then((response) => response.json())
-          .then((data) => setStore({ dealDetails: data }))
-          .catch((err) => console.error("Error:", err));
-      },
       /*Add Deal*/
       addDeal: (newDeal) => {
         fetch(`${getStore().backEndUrl}/api/deal`, {
@@ -91,13 +84,6 @@ const getState = ({ getStore, getActions, setStore }) => {
         fetch(`${getStore().backEndUrl}/api/contact`)
           .then((response) => response.json())
           .then((data) => setStore({ listOfContacts: data }))
-          .catch((err) => console.error("Error:", err));
-      },
-      /*Get Contact by ID*/
-      getContactByID: (contact_id) => {
-        fetch(`${getStore().backEndUrl}/api/contact/${contact_id}`)
-          .then((response) => response.json())
-          .then((data) => setStore({ contactDetails: data }))
           .catch((err) => console.error("Error:", err));
       },
       /*Add Contact*/

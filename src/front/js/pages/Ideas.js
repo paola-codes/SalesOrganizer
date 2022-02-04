@@ -39,6 +39,13 @@ For flux.js
                 .then((data) => setStore({ dealsbyDealOwner: data }))
                 .catch((err) => console.error("Error:", err));
             },
+            //Get Deal by ID
+            getDealByID: (deal_id) => {
+                fetch(`${getStore().backEndUrl}/api/deal/${deal_id}`)
+                .then((response) => response.json())
+                .then((data) => setStore({ dealDetails: data }))
+                .catch((err) => console.error("Error:", err));
+            },
         For Contacts:
             //Get Contact by Name
             getContactByName: (full_name) => {
@@ -52,6 +59,13 @@ For flux.js
                 fetch(`${getStore().backEndUrl}/api/contact/email/${email}`)
                 .then((response) => response.json())
                 .then((data) => setStore({ contactByEmail: data }))
+                .catch((err) => console.error("Error:", err));
+            },
+            //Get Contact by ID
+            getContactByID: (contact_id) => {
+                fetch(`${getStore().backEndUrl}/api/contact/${contact_id}`)
+                .then((response) => response.json())
+                .then((data) => setStore({ contactDetails: data }))
                 .catch((err) => console.error("Error:", err));
             },
 
